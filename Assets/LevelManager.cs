@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager instance;
 
     public SwitchController theSwitch;
+    public DoorController theDoor;
 
     public bool switchEnabled;
     public bool switchOff;
@@ -20,21 +21,26 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {
         gotKey = false;
+
+        theSwitch.turnOff();
+        switchOff = true;
     }
 
     public void flipTheSwitch()
     {
-        if (switchEnabled == true && gotKey == true)
+        if (switchEnabled && gotKey)
         {
-            if (switchOff == true)
+            if (switchOff)
             {
                 theSwitch.turnOn();
+                StartCoroutine(theDoor.OpenCoroutine());
                 switchOff = false;
             }
 
-            else if (switchOff == false)
+            else if (!switchOff)
             {
                 theSwitch.turnOff();
+                StartCoroutine(theDoor.CloseCoroutine());
                 switchOff = true;
             }
         }
@@ -42,13 +48,11 @@ public class LevelManager : MonoBehaviour {
 
         public void onSwitchTriggerEnter(Collider2D other)
     {
-        Debug.Log("enabled");
         switchEnabled = true;
     }
 
     public void onSwitchTriggerExit(Collider2D other)
     {
-        Debug.Log("disabled");
         switchEnabled = false;
     }
 }

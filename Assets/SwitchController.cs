@@ -9,8 +9,6 @@ public class SwitchController : MonoBehaviour {
     void Awake()
     {
         switchAnimator = gameObject.GetComponent<Animator>();
-
-        turnOff();
     }
 
     public void turnOn()

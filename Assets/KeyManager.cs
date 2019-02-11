@@ -9,13 +9,11 @@ public class KeyManager : MonoBehaviour {
     private void Start()
     {
         Key = gameObject;
-        Debug.Log("gotKey " + LevelManager.instance.gotKey);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         LevelManager.instance.gotKey = true;
-        Debug.Log("gotKey " + LevelManager.instance.gotKey);
         Destroy(Key);
     }
 }

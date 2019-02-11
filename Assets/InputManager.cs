@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             LevelManager.instance.flipTheSwitch();
         }
