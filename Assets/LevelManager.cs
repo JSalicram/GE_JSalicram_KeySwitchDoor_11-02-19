@@ -10,15 +10,21 @@ public class LevelManager : MonoBehaviour {
     public bool switchEnabled;
     public bool switchOff;
 
+    public bool gotKey;
+
     private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        gotKey = false;
+    }
+
     public void flipTheSwitch()
     {
-
-        if (switchEnabled == true)
+        if (switchEnabled == true && gotKey == true)
         {
             if (switchOff == true)
             {
